@@ -1,11 +1,200 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bhalchandra Masale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bhalchandra Masale — authentic traditional masalas from Maharashtra.">
+  <title>Bhalchandra Masale | The Taste of Maharashtra</title>
+  <style>
+    :root{
+      --cream:#f7f0df; --paper:#fffaf0; --ink:#241b14; --red:#8f201d;
+      --gold:#c99a38; --green:#304f2c; --muted:#6e6257;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.05}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:20;background:rgba(255,250,240,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e7dcc8}
+    nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-mark{font-size:29px;color:var(--green)}
+    .logo-text{font-family:Georgia,serif;text-align:center;color:var(--red);font-weight:bold;letter-spacing:.8px;font-size:22px}
+    .logo-text span{display:block;color:var(--ink);font:700 11px Arial;letter-spacing:4px;margin-top:-3px}
+    .links{display:flex;gap:28px;font-size:14px}
+    .links a{transition:.2s}.links a:hover{color:var(--red)}
+    .amazon{background:var(--red);color:white;padding:12px 20px;border-radius:30px;font-weight:bold;font-size:14px;white-space:nowrap}
+    .amazon b{font-size:20px;margin-right:7px}
+    @media(max-width:800px){.links{display:none}.logo-text{font-size:19px}.amazon{padding:10px 14px}}
+
+    /* Hero */
+    .hero{min-height:650px;display:grid;place-items:center;position:relative;overflow:hidden;
+      background:
+      linear-gradient(90deg,rgba(20,12,7,.88) 0%,rgba(20,12,7,.62) 45%,rgba(20,12,7,.22) 100%),
+      url("https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=2000&q=85") center/cover}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,var(--paper))}
+    .hero-content{width:min(1180px,92%);color:white;position:relative;z-index:2;padding:90px 0}
+    .eyebrow{letter-spacing:4px;text-transform:uppercase;color:#e9c45b;font-size:12px;font-weight:bold}
+    .hero h1{font-size:clamp(54px,7vw,88px);max-width:700px;margin:18px 0}
+    .hero p{max-width:540px;font-size:18px;color:#eee3d4;margin-bottom:30px}
+    .hero-cta{display:inline-flex;align-items:center;gap:12px;background:#f3b932;color:#241b14;padding:15px 24px;border-radius:30px;font-weight:bold}
+    .hero-note{font-size:12px;color:#ddd0bf;margin-top:12px}
+
+    /* Sections */
+    section{padding:95px 0}
+    .section-kicker{text-align:center;color:var(--red);letter-spacing:3px;text-transform:uppercase;font-size:12px;font-weight:bold}
+    .section-title{text-align:center;font-size:46px;margin:12px 0}
+    .section-sub{text-align:center;color:var(--muted);max-width:650px;margin:0 auto 48px}
+
+    /* Products */
+    .products{background:var(--cream);position:relative}
+    .product-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+    .product{text-align:center}
+    .pack{height:250px;border-radius:5px 5px 10px 10px;padding:28px 12px;color:white;box-shadow:0 18px 30px rgba(45,28,12,.16);display:flex;flex-direction:column;justify-content:space-between;transform:rotate(-1deg);transition:.3s}
+    .product:nth-child(even) .pack{transform:rotate(1deg)}
+    .product:hover .pack{transform:translateY(-8px) rotate(0)}
+    .pack .mini-logo{font:700 18px Georgia,serif;letter-spacing:1px}
+    .pack .mini-leaf{font-size:22px}
+    .pack h3{font:700 21px Georgia,serif}
+    .pack small{font-size:9px;letter-spacing:2px;text-transform:uppercase}
+    .goda{background:linear-gradient(145deg,#b42c25,#751814)}
+    .haldi{background:linear-gradient(145deg,#efbd19,#d38d08);color:#3c2707}
+    .chilli{background:linear-gradient(145deg,#c73a26,#8e1e19)}
+    .coriander{background:linear-gradient(145deg,#47783c,#234e29)}
+    .garam{background:linear-gradient(145deg,#87502e,#54301f)}
+    .product h3{margin-top:22px;font:700 18px Georgia,serif}
+    .product p{font-size:13px;color:var(--muted);margin-top:7px}
+
+    /* Story */
+    .story{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+    .story-image{background:url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85") center/cover}
+    .story-copy{padding:70px clamp(30px,6vw,90px);display:flex;flex-direction:column;justify-content:center}
+    .story-copy .section-kicker{text-align:left}
+    .story-copy h2{text-align:left;font-size:45px;margin:12px 0 20px}
+    .story-copy p{color:var(--muted);margin-bottom:25px}
+    .values{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:15px}
+    .value{text-align:center;border-top:1px solid #d8cbb7;padding-top:15px;font-size:12px;font-weight:bold}
+    .value strong{display:block;font-size:23px;margin-bottom:5px}
+    @media(max-width:800px){.story{grid-template-columns:1fr}.story-image{min-height:330px}.values{grid-template-columns:repeat(2,1fr)}}
+
+    /* Recipe banner */
+    .recipe{min-height:410px;display:flex;align-items:center;background:
+      linear-gradient(90deg,rgba(26,15,9,.88),rgba(26,15,9,.4)),
+      url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1800&q=85") center/cover;color:white}
+    .recipe-copy{width:min(1180px,92%);margin:auto}
+    .recipe-copy .section-kicker{text-align:left;color:#e9c45b}
+    .recipe-copy h2{font-size:52px;max-width:600px;margin:12px 0}
+    .recipe-copy p{max-width:500px;color:#eee0ce;margin-bottom:24px}
+    .light-btn{display:inline-block;background:#fff5df;color:var(--ink);padding:13px 22px;border-radius:28px;font-weight:bold}
+
+    /* Amazon strip */
+    .buy{background:#eee1c7;text-align:center;padding:55px 20px}
+    .buy .amazon-word{font:bold 54px Arial;letter-spacing:-4px}
+    .buy .amazon-word span{color:#e6a817}
+    .buy p{color:var(--muted);margin:8px auto 20px}
+
+    /* Footer */
+    footer{background:#241a12;color:#f5ead8;padding:60px 0 35px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+    footer h3{font-size:21px;margin-bottom:12px}
+    footer p,footer a{font-size:13px;color:#cdbfae}
+    footer a{display:block;margin:7px 0}.footer-logo{font-size:27px;color:white;font-family:Georgia,serif;font-weight:bold}
+    .copyright{border-top:1px solid #493b2d;margin-top:45px;padding-top:20px;font-size:12px;color:#9d8e7c}
+    @media(max-width:800px){.product-grid{grid-template-columns:repeat(2,1fr)}.product:last-child{grid-column:span 2}.section-title{font-size:37px}.footer-grid{grid-template-columns:1fr 1fr}.hero{min-height:580px}}
+  </style>
 </head>
 <body>
-  <h1>Bhalchandra Masale</h1>
-  <p>B-163, MIDC Wai, Satara 412803</p>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#">
+        <div class="logo-mark">◡</div>
+        <div class="logo-text">BHALCHANDRA<span>MASALE</span></div>
+      </a>
+      <div class="links">
+        <a href="#">Home</a><a href="#products">Our Products</a><a href="#story">Our Story</a>
+        <a href="#recipes">Recipes</a><a href="#buy">Where to Buy</a><a href="#contact">Contact</a>
+      </div>
+      <a class="amazon" href="https://www.amazon.in/" target="_blank" rel="noopener"><b>a</b> Shop on Amazon</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Authentic &nbsp;•&nbsp; Traditional &nbsp;•&nbsp; Pure</div>
+      <h1>The Taste of Maharashtra</h1>
+      <p>Bhalchandra Masale brings you the rich aroma and authentic taste of traditional Maharashtrian spices, crafted with care.</p>
+      <a class="hero-cta" href="https://www.amazon.in/" target="_blank" rel="noopener">a&nbsp;&nbsp; Shop on Amazon &nbsp;→</a>
+      <div class="hero-note">Bring home authentic taste, now on Amazon.</div>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-kicker">Our Products</div>
+      <h2 class="section-title">Traditional Masalas for Every Kitchen</h2>
+      <p class="section-sub">A range of carefully blended spices to add authentic taste and aroma to your meals.</p>
+      <div class="product-grid">
+        <article class="product"><div class="pack goda"><div><div class="mini-leaf">◡</div><div class="mini-logo">BHALCHANDRA<br><small>MASALE</small></div></div><h3>Goda Masala</h3><small>Traditional blend</small></div><h3>Goda Masala</h3><p>The authentic Maharashtrian blend for traditional dishes.</p></article>
+        <article class="product"><div class="pack haldi"><div><div class="mini-leaf">◡</div><div class="mini-logo">BHALCHANDRA<br><small>MASALE</small></div></div><h3>Turmeric Powder</h3><small>Pure & natural</small></div><h3>Turmeric Powder</h3><p>Pure, natural and full of goodness.</p></article>
+        <article class="product"><div class="pack chilli"><div><div class="mini-leaf">◡</div><div class="mini-logo">BHALCHANDRA<br><small>MASALE</small></div></div><h3>Red Chilli Powder</h3><small>Rich colour & heat</small></div><h3>Red Chilli Powder</h3><p>Adds the perfect heat and vibrant colour.</p></article>
+        <article class="product"><div class="pack coriander"><div><div class="mini-leaf">◡</div><div class="mini-logo">BHALCHANDRA<br><small>MASALE</small></div></div><h3>Coriander Powder</h3><small>Aromatic & fresh</small></div><h3>Coriander Powder</h3><p>Aromatic and fresh for everyday cooking.</p></article>
+        <article class="product"><div class="pack garam"><div><div class="mini-leaf">◡</div><div class="mini-logo">BHALCHANDRA<br><small>MASALE</small></div></div><h3>Garam Masala</h3><small>Rich & balanced</small></div><h3>Garam Masala</h3><p>A rich blend for unforgettable flavour.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" style="padding:0">
+    <div class="story">
+      <div class="story-image"></div>
+      <div class="story-copy">
+        <div class="section-kicker">Our Story</div>
+        <h2>A Tradition of Quality and Taste</h2>
+        <p>Bhalchandra Masale is based in Wai, Satara — a region known for its rich culinary heritage. We are committed to producing high-quality, authentic masalas made from carefully selected spices, blended to perfection.</p>
+        <p>Our goal is simple — to keep the traditional taste of Maharashtra alive in every home.</p>
+        <div class="values">
+          <div class="value"><strong>◈</strong>Premium<br>Ingredients</div>
+          <div class="value"><strong>♨</strong>Traditional<br>Grinding</div>
+          <div class="value"><strong>✓</strong>Consistent<br>Quality</div>
+          <div class="value"><strong>♡</strong>Made with<br>Care</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recipe" id="recipes">
+    <div class="recipe-copy">
+      <div class="section-kicker">Recipes & Inspiration</div>
+      <h2>More Than Just Spices</h2>
+      <p>Discover delicious recipes and cooking inspiration using Bhalchandra Masale.</p>
+      <a class="light-btn" href="#">Explore Recipes &nbsp;→</a>
+    </div>
+  </section>
+
+  <section class="buy" id="buy">
+    <div class="section-kicker">Available Online</div>
+    <div class="amazon-word">amazon<span>⌁</span></div>
+    <p>Shop our range on Amazon and bring home the authentic taste of Bhalchandra Masale.</p>
+    <a class="hero-cta" href="https://www.amazon.in/" target="_blank" rel="noopener">a&nbsp;&nbsp; Shop on Amazon &nbsp;→</a>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-logo">BHALCHANDRA<br>MASALE</div><p style="margin-top:10px">Authentic taste. Traditional roots.</p></div>
+      <div><h3>Visit Us</h3><p>B-163, MIDC Wai,<br>Satara 412803,<br>Maharashtra, India</p></div>
+      <div><h3>Quick Links</h3><a href="#">Home</a><a href="#products">Our Products</a><a href="#story">Our Story</a><a href="#recipes">Recipes</a></div>
+      <div><h3>Buy Online</h3><a href="https://www.amazon.in/" target="_blank" rel="noopener">Amazon →</a><a href="mailto:hello@bhalchandramasale.in">Email Us →</a></div>
+    </div>
+    <div class="copyright">© 2026 Bhalchandra Masale. All rights reserved.</div>
+  </div>
+</footer>
 </body>
 </html>
